@@ -1,5 +1,6 @@
-#test
+test
 =================
 
-||N1||N2||
-|n1|n2|
+| Plugin | README |
+| ------ | ------ |
+| Dropbox | [plugins/dropbox/README.md][PlDb] |
