@@ -13,10 +13,16 @@ import java.util.List;
  */
 public class FirstTest {
 
+    private static String os = System.getProperty("os.name").toLowerCase();
+    private static String cwd = System.getProperty("user.dir");
+
     @BeforeClass
     public void beforeClass() {
-        String cwd = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver");
+        if (!isWindows()) {
+            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver");
+        } else {
+            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver.exe");
+        }
     }
 
     @Test
@@ -31,5 +37,9 @@ public class FirstTest {
         Assert.assertEquals(items.size(), 16);
 
         driver.close();
+    }
+
+    private static boolean isWindows() {
+        return (os.indexOf("win") >= 0);
     }
 }
