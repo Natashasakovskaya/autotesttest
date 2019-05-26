@@ -56,55 +56,59 @@ public class FirstTest {
         for (WebElement item : items) {
             driver1.get(item.getAttribute("href"));
         }
-//
-//
-//        Assert.assertEquals(driver.getTitle(), "New Casino games | BoVegas");
+
+        Assert.assertEquals(driver.getTitle(), "The Best Online Casino - $5500 Welcome Bonus | BoVegas");
+
+        driver1.close();
+        driver.close();
+    }
+
+    @Test
+    public void testWindowCustomerService() {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(this.SITE_URL);
+
+        WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.live-chat"));
+        item.click();
+
+        WebElement liveChat = driver.findElement(By.cssSelector("iframe.open"));
 
         driver.close();
     }
 
+    @Test
+    public void testBtnClickContactUs()
+    {
 
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
+        driver.get(this.SITE_URL);
 
+        WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.phone"));
+        item.click();
 
-        // зайти на головнк
-        // перевырити к-ть елементыв в меню
-        // зробити перехід по всіх ссилках з меню
-//        // Порівняти тайтлт всіх сторінок
-//
-//    }
+        Assert.assertEquals(driver.getTitle(), "Contact Us | BoVegas");
 
-//
-//    @Test
-//    public void testBtnClickContactUs()
-//    {
-//
-//        WebDriver driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//
-//        driver.get(this.SITE_URL);
-//
-//        WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.phone"));
-//        item.click();
-//
-//        Assert.assertEquals(driver.getTitle(), "Contact Us | BoVegas");
-//
-//        driver.close();
-//    }
-//
-//    @Test
-//    public void test() {
-//
-//        WebDriver driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//
-//        driver.get("https://textandmarketing.com/shop/");
-//
-//        List<WebElement> items = driver.findElements(By.cssSelector(".item"));
-//        Assert.assertEquals(items.size(), 16);
-//
-//        driver.close();
-//    }
+        driver.close();
+    }
+
+    @Test
+    public void test() {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get("https://textandmarketing.com/shop/");
+
+        List<WebElement> items = driver.findElements(By.cssSelector(".item"));
+        Assert.assertEquals(items.size(), 16);
+
+        driver.close();
+    }
 
     private static boolean isWindows() {
         return (os.indexOf("win") >= 0);
