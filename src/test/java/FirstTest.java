@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class FirstTest {
 
+    private String SITE_URL = "https://bovegas.com/";
+
     private static String os = System.getProperty("os.name").toLowerCase();
     private static String cwd = System.getProperty("user.dir");
 
@@ -23,6 +25,23 @@ public class FirstTest {
         } else {
             System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver.exe");
         }
+    }
+
+    @Test
+    public void testBtnClickContactUs()
+    {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(this.SITE_URL);
+
+        WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.phone"));
+        item.click();
+
+        Assert.assertEquals(driver.getTitle(), "Contact Us | BoVegas");
+
+        driver.close();
     }
 
     @Test
