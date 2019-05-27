@@ -28,6 +28,58 @@ public class FirstTest {
     }
 
     @Test
+    public void testTopMainMenu() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(this.SITE_URL);
+
+        List<WebElement> items = driver.findElements(By.cssSelector(".top-menu-item"));
+
+
+        Assert.assertEquals(items.size(), 9);
+        driver.close();
+    }
+
+    @Test
+    public void testTopMenuBtnGames() {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(this.SITE_URL);
+
+
+        WebDriver driver1 = new ChromeDriver();
+
+        List<WebElement> items = driver.findElements(By.cssSelector(".top-menu-item a"));
+        for (WebElement item : items) {
+            driver1.get(item.getAttribute("href"));
+        }
+
+        Assert.assertEquals(driver.getTitle(), "The Best Online Casino - $5500 Welcome Bonus | BoVegas");
+
+        driver1.close();
+        driver.close();
+    }
+
+    @Test
+    public void testWindowCustomerService() {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(this.SITE_URL);
+
+        WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.live-chat"));
+        item.click();
+
+        WebElement liveChat = driver.findElement(By.cssSelector("iframe.open"));
+
+        driver.close();
+    }
+
+    @Test
     public void testBtnClickContactUs()
     {
 
