@@ -74,7 +74,7 @@ public class FirstTest {
         WebElement item = driver.findElement(By.cssSelector(".btn.bar-btn.live-chat"));
         item.click();
 
-        WebElement liveChat = driver.findElement(By.cssSelector("iframe.open"));
+        driver.findElement(By.cssSelector("iframe.open"));
 
         driver.close();
     }
@@ -111,6 +111,6 @@ public class FirstTest {
     }
 
     private static boolean isWindows() {
-        return (os.indexOf("win") >= 0);
+        return os.contains("win");
     }
 }
