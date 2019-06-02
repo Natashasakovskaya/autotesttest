@@ -6,19 +6,13 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import util.ChromeDriverLoader;
 
 public class LoginFormTest {
 
-    private static String os = System.getProperty("os.name").toLowerCase();
-    private static String cwd = System.getProperty("user.dir");
-
     @BeforeClass
     public void beforeClass() {
-        if (!isWindows()) {
-            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver");
-        } else {
-            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver.exe");
-        }
+        ChromeDriverLoader.loadConfig();
     }
 
     @Test(dataProvider="dataFailedValidationLogin")
@@ -158,9 +152,5 @@ public class LoginFormTest {
         } catch (InterruptedException e) {
 
         }
-    }
-
-    private static boolean isWindows() {
-        return os.contains("win");
     }
 }

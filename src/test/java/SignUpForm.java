@@ -1,28 +1,18 @@
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.Select;
+import util.ChromeDriverLoader;
+import util.WebDriverExtension;
 
 public class SignUpForm {
 
-    private static String os = System.getProperty("os.name").toLowerCase();
-    private static String cwd = System.getProperty("user.dir");
-
-    private void doubleClickIfItNeed(WebElement btn, int timeIntervalBeforeClick) {
-        try {
-            this.waitBrowserLoaded(50);
-            btn.click();
-        } catch (WebDriverException exception) {
-            this.waitBrowserLoaded(timeIntervalBeforeClick);
-            btn.click();
-        }
-    }
+    private String SITE_URL = "https://stage.slotsempire.com/";
 
     @Test
     public void testSuccessSignUp() {
 
-        WebDriver webPageInBrowser = this.openWebPage();
+        WebDriver webPageInBrowser = WebDriverExtension.openWebPage(this.SITE_URL);
 
         WebElement loginBtn = webPageInBrowser.findElement(By.cssSelector("#register-btn"));
         loginBtn.click();
@@ -40,10 +30,8 @@ public class SignUpForm {
         formInputEmail.sendKeys("qawsweeww@gmail.com");
 
         WebElement nextStepBtn = webPageInBrowser.findElement(By.cssSelector("#go-to-second"));
-        this.doubleClickIfItNeed(nextStepBtn, 3000);
+        WebDriverExtension.doubleClickIfItNeed(nextStepBtn, 3000);
 
-
-        this.waitBrowserLoaded(50);
         WebElement formFirstName = webPageInBrowser.findElement(By.cssSelector("#g-firstname"));
         formFirstName.sendKeys("amaris");
 
@@ -71,40 +59,10 @@ public class SignUpForm {
         WebElement nextStepBtn2 = webPageInBrowser.findElement(By.id("go-to-last"));
         nextStepBtn2.click();
 
-
-
-
-
-    }
-
-    private WebDriver openWebPage()
-    {
-        WebDriver browser = new ChromeDriver();
-        browser.manage().window().maximize();
-
-        browser.get("https://stage.slotsempire.com/");
-
-        return browser;
     }
 
     @BeforeClass
     public void beforeClass() {
-        if (!isWindows()) {
-            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver");
-        } else {
-            System.setProperty("webdriver.chrome.driver", cwd + "/externalVendors/chromedriver.exe");
-        }
-    }
-
-    private void waitBrowserLoaded(int second) {
-        try {
-            Thread.sleep(second);
-        } catch (InterruptedException e) {
-
-        }
-    }
-
-    private static boolean isWindows() {
-        return os.contains("win");
+        ChromeDriverLoader.loadConfig();
     }
 }
