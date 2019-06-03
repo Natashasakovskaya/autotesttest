@@ -62,7 +62,25 @@ public class FirstTest {
         driver1.close();
         driver.close();
     }
+    @Test
+        public void testAllLinks() {
 
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+
+            driver.get(this.SITE_URL);
+
+            WebDriver driver1 = new ChromeDriver();
+
+            List<WebElement> items = driver.findElements(By.cssSelector("a"));
+            for (WebElement item : items) {
+                driver1.get(item.getAttribute("href"));
+            }
+
+
+        driver1.close();
+        driver.close();
+    }
     @Test
     public void testWindowCustomerService() {
 
