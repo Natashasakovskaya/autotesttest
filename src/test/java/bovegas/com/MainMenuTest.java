@@ -1,18 +1,17 @@
+package bovegas.com;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import util.ChromeDriverLoader;
 
 import java.util.List;
 
-/**
- * It is the first test.
- * The purpose of this test is to demonstrate teamwork using a hit control for versions
- */
-public class FirstTest {
+public class MainMenuTest {
 
     private String SITE_URL = "https://bovegas.com/";
 
@@ -56,25 +55,26 @@ public class FirstTest {
         driver1.close();
         driver.close();
     }
+
     @Test
-        public void testAllLinks() {
+    public void testAllLinks() {
 
-            WebDriver driver = new ChromeDriver();
-            driver.manage().window().maximize();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
-            driver.get(this.SITE_URL);
+        driver.get(this.SITE_URL);
 
-            WebDriver driver1 = new ChromeDriver();
+        WebDriver driver1 = new ChromeDriver();
 
-            List<WebElement> items = driver.findElements(By.cssSelector("a"));
-            for (WebElement item : items) {
-                driver1.get(item.getAttribute("href"));
-            }
-
+        List<WebElement> items = driver.findElements(By.cssSelector("a"));
+        for (WebElement item : items) {
+            driver1.get(item.getAttribute("href"));
+        }
 
         driver1.close();
         driver.close();
     }
+
     @Test
     public void testWindowCustomerService() {
 
@@ -104,20 +104,6 @@ public class FirstTest {
         item.click();
 
         Assert.assertEquals(driver.getTitle(), "Contact Us | BoVegas");
-
-        driver.close();
-    }
-
-    @Test
-    public void test() {
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-
-        driver.get("https://textandmarketing.com/shop/");
-
-        List<WebElement> items = driver.findElements(By.cssSelector(".item"));
-        Assert.assertEquals(items.size(), 16);
 
         driver.close();
     }

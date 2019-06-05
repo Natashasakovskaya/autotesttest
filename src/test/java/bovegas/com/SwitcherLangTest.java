@@ -1,3 +1,5 @@
+package bovegas.com;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,10 +10,10 @@ import org.testng.annotations.Test;
 import util.ChromeDriverLoader;
 import util.WebDriverExtension;
 
-public class SwitcherBoVegasCasino
+public class SwitcherLangTest
 {
-
     private String SITE_URL = "https://bovegas.com/en";
+
     @BeforeClass
     public void beforeClass() {
         ChromeDriverLoader.loadConfig();

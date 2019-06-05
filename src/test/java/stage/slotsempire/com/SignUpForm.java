@@ -1,3 +1,5 @@
+package stage.slotsempire.com;
+
 import org.openqa.selenium.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
