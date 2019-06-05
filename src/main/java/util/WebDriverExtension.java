@@ -54,4 +54,15 @@ public class WebDriverExtension {
 
         }
     }
+
+    /**
+     * Check element has some class
+     *
+     * @param element
+     * @param active
+     * @return true if element has class
+     */
+    public static boolean hasClass(WebElement element, String active) {
+        return element.getAttribute("class").contains(active);
+    }
 }
