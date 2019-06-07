@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AT" />
-        <module name="firstnata" />
         <module name="autotesttest" />
+        <module name="firstnata" />
       </profile>
     </annotationProcessing>
   </component>
